@@ -1,33 +1,23 @@
 # hawlink
 personal pinterest
 
-## pink index prototype
+**pink index** is a minimalist collage website: white background, pink topic links, and images you can paste, upload, move, resize and attach hyperlinks to.
 
-A tiny personal image collection: white space, pink topic links, and a freeform collage. Built with plain HTML, CSS, JavaScript and Node.js 22+; no dependencies or build step.
+The entire website is **[index.html](index.html)**, including styling, controls and starter photographs. No separate JavaScript, CSS, server, packages or build step is needed. Download it and open it in your browser for a local preview.
 
-```sh
-npm start
-```
+For a website address and saving across devices, follow **[the setup guide](SETUP.md)**. GitHub Pages hosts the HTML; Supabase supplies private sign-in, layouts and image storage. **The Supabase connection is not configured yet.** The site labels the local preview until it is connected.
 
-The server listens on port 3000 (`PORT` and `HOST` are configurable). `npm run dev` restarts it when server files change. `npm test` runs the integration tests with temporary, isolated data.
+- Pink topic tabs, with rename/delete controls.
+- Paste image data, upload, or drop JPG, PNG, GIF or WebP files up to 12 MB.
+- Drag to move; pull a selected image's corner to resize; arrow keys also move it.
+- Double-click to set a link/caption. Browse mode follows links.
+- Page colour, layer order, deletion, and backup download/restore.
+- Private cloud collections, session refresh, device polling, and explicit conflict choices once connected.
 
-## Using your collection
+The SQL file is a one-time setup instruction for the storage service, not another website component. Only the Project URL and public publishable/anon key go into the HTML. Passwords and secret/service-role keys never belong there.
 
-- Create, rename and delete topics with **+ new tab** and **edit this tab**.
-- Upload images, drag files onto the collage, or paste copied image data. Supports JPG, PNG, GIF and WebP up to 12 MB each. Copy an actual image, rather than a web page URL.
-- In **edit**, drag images to arrange them; use the bottom-right handle to resize while preserving proportions. Arrow keys move a focused image; Shift moves faster. Select an image for link, layer and removal controls. Double-click or press Enter to edit its destination and caption.
-- In **browse**, linked images open their destination in a new tab.
-- Change the page background with **page colour**.
-- Changes save to the server. Other open browsers check for updates every 2.2 seconds. Simultaneous edits surface a conflict with an explicit choice rather than silently overwriting another browser.
+## Starter photo credits
 
-## Persistence and hosting
+Photos by contributors to [ianare/exif-samples](https://github.com/ianare/exif-samples), under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). They were oriented, resized, recompressed, stripped of metadata and embedded in HTML; modified copies retain that license. Source paths appear in the website's © dialog. User uploads retain their own rights.
 
-`data/board.json` and `data/uploads/` hold the shared collection and uploaded images. Both survive server restarts. Back up this directory. Set `DATA_DIR` to an absolute path on persistent storage when deploying. Starter photographs are bundled locally; the app needs no third-party image service.
-
-For access from different devices, run this server at a shared HTTPS address with a persistent disk. Browser-local storage is used only to remember the selected tab, never for the saved collection. Running independent copies on separate hosts does not sync them. Processes and data in an ephemeral deployment will not provide durable hosting.
-
-**This prototype has one shared board and no login. Anyone who can reach the server can edit it.** Before public hosting, add authentication or protect the whole site with your hosting provider's access control. Browse/edit is a convenience mode, not authorization. The JSON store is designed for one Node process; multiple server instances need a shared database and transaction handling. Public hosting and authentication have not been configured.
-
-## Starter image credits
-
-The seven removable sample images are from [ianare/exif-samples](https://github.com/ianare/exif-samples), contributed by its authors under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). They have been auto-oriented, resized, recompressed and stripped of metadata. The modified samples retain that license; see [photo credits](public/photos/credits.html) for individual source paths. No additional rights to user uploads are implied.
+The Node prototype has been replaced by this single HTML file. Any existing ignored `data/` directory is preserved locally; it isn't uploaded to GitHub or automatically moved to Supabase.
