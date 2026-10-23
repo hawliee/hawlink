@@ -1,4 +1,7 @@
-# pink index
+# hawlink
+personal pinterest
+
+## pink index prototype
 
 A tiny personal image collection: white space, pink topic links, and a freeform collage. Built with plain HTML, CSS, JavaScript and Node.js 22+; no dependencies or build step.
 
